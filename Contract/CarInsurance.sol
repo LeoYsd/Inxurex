@@ -49,4 +49,21 @@ contract CarInsuranceContract {
         });
         policyCounter++;
     }
+
+   /**
+     * @dev function to calculate Premium
+     */
+    function calculatePremium(uint256 coverageLimit) internal pure returns (uint256) {
+     
+    }
+
+     /**
+     * @notice assumes that the insurer is the caller of the function
+     * @dev function to renew insurance policy
+     */
+    function renewPolicy(uint256 policyId, uint256 newEndDate) external onlyInsurer {
+        require(policies[policyId].isActive, "Policy is not active");
+        policies[policyId].endDate = newEndDate;
+    }
+
 }
